@@ -8,7 +8,14 @@ public class TipCalculator {
 		int bill = getBill(userInput);
 		displayPrices(bill, tipPercent);
 	}
-
+	
+	/**
+	*Get user input of tip (in %) and attempt 
+	*parsing to an int. The user will be prompted 
+	*to specify again if the input was invalid. 
+	*@param Scanner object to scan user's input
+	*@return tip percent as a double
+	*/
 	private static double getTipPercent(Scanner sc){
 		int tipPercent;
 		double tip;
@@ -28,8 +35,16 @@ public class TipCalculator {
 		return tip;
 	}
 
+	/**
+	*Get user input of bill and attempt 
+	*parsing to an int. The user will be prompted 
+	*to specify again if the input was invalid. 
+	*@param Scanner object to scan user's input
+	*@return bill 
+	*/
 	private static int getBill(Scanner sc){
 		int bill = 0;
+		
 		while(true){
 			System.out.print("Please specify bill total: $");
 			String billStr = sc.next();
@@ -42,10 +57,13 @@ public class TipCalculator {
 				 
 		}
 
-
 		return bill;
 	}
 
+	/**
+	*Calculate total by multiplying bill 
+	*with (1+tip).
+	*/
 	private static void displayPrices(int bill, double tip){
 		System.out.println("--------------------------------------------");
 		System.out.println("Total: $" + (bill * (1+tip)));
