@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                tipText.setText("Tip : " + progress + "%");
+                tipText.setText("Tip: " + progress + "%");
                 //Toast.makeText(getApplicationContext(), "Stopped tracking seekbar", Toast.LENGTH_SHORT).show();
             }
         });
