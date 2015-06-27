@@ -7,8 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,33 +16,31 @@
         android:textSize="24sp"
         android:gravity="center_horizontal"
         android:id="@+id/textView"
-        android:paddingBottom="50dp"/>
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bill ($)"
-            android:textSize="20sp"
-            android:layout_gravity="center_horizontal"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:gravity="center_horizontal"
-            android:ems="10"
-            android:id="@+id/billInput"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="16dp" />
-
-
+        android:paddingBottom="24dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tip (%)"
+        android:id="@+id/billText"
+        android:text="Bill ($)"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:gravity="center_horizontal"
+        android:ems="10"
+        android:id="@+id/billInput"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tipText"
+        android:text="Tip (%): "
         android:paddingTop="32dp"
         android:textSize="20sp"
         android:layout_gravity="center_horizontal"/>
@@ -59,11 +56,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Split (#)"
-
             android:textSize="20sp"
             android:layout_gravity="center"
             android:paddingRight="16dp"/>
@@ -74,13 +71,16 @@
             android:id="@+id/splitInput"
             android:paddingTop="16dp">
         </NumberPicker>
+
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Calculate Total"
-        android:layout_margin="32dp"/>
+        android:id="@+id/total"
+        android:paddingTop="24dp"
+        android:text="Total: "
+        android:gravity="center"
+        android:textSize="24sp"/>
 
 </LinearLayout>

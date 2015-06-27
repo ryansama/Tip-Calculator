@@ -7,7 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.support.v7.app.ActionBar;
+import android.widget.NumberPicker;
 import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import java.util.Scanner;
 
@@ -16,18 +20,57 @@ public class MainActivity extends ActionBarActivity {
 
     EditText billInput;//input for bill amount in dollars
     SeekBar tipInput;//input for tip amount in %
+    TextView tipText;//TextView showing desired tip amount
+    TextView total;//TextView showing total
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initializeVariables();
 
         //hide action bar upon launch
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        //set up SeekBar
+        //Initialize the TextView showing current tip with '0%'.
+        tipText.setText("Tip: " + tipInput.getProgress() + "%");
+        tipInput.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+            int progress = 0;
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+                progress = progresValue;
+                //Toast.makeText(getApplicationContext(), "Changing seekbar's progress", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //Toast.makeText(getApplicationContext(), "Started tracking seekbar", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                tipText.setText("Tip : " + progress + "%");
+                //Toast.makeText(getApplicationContext(), "Stopped tracking seekbar", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //set up NumberPicker
+        NumberPicker np = (NumberPicker) findViewById(R.id.splitInput);
+        np.setMaxValue(30); np.setMinValue(0);
 
 
+
+
+    }
+
+    //initialize variables by finding ID
+    private void initializeVariables() {
+        tipInput = (SeekBar) findViewById(R.id.tipInput);
+        tipText = (TextView) findViewById(R.id.tipText);
+        billInput = (EditText) findViewById(R.id.billInput);
     }
 
     @Override
