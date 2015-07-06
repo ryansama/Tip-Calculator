@@ -2,57 +2,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:background="#ffff7729"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tip Calculator"
-        android:textSize="30sp"
-        android:paddingLeft="16dp"
-        android:id="@+id/textView"
         android:paddingBottom="24dp"
-        android:textColor="#FFF"/>
+        android:paddingLeft="16dp"
+        android:text="Tip Calculator"
+        android:textColor="#000"
+        android:textSize="34sp" />
 
     <TextView
+        android:id="@+id/billText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/billText"
+        android:layout_gravity="center_horizontal"
         android:text="Bill ($)"
-        android:textColor="#FFF"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"/>
+        android:textColor="#000"
+        android:textSize="24sp" />
 
     <EditText
+        android:id="@+id/billInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:gravity="center_horizontal"
-        android:ems="10"
-        android:textColor="#FFF"
-        android:id="@+id/billInput"
         android:layout_centerHorizontal="true"
-        android:paddingTop="16dp" />
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal"
+        android:paddingTop="16dp"
+        android:textColor="#FFF" />
 
     <TextView
+        android:id="@+id/tipText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tipText"
-        android:text="Tip (%): "
-        android:textColor="#FFF"
+        android:layout_gravity="center_horizontal"
         android:paddingTop="32dp"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"/>
+        android:text="Tip (%): "
+        android:textColor="#000"
+        android:textSize="24sp" />
 
     <SeekBar
+        android:id="@+id/tipInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tipInput"
         android:layout_marginTop="16dp"
         android:max="100" />
 
@@ -64,29 +63,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Split (#)"
-            android:textColor="#FFF"
-            android:textSize="20sp"
             android:layout_gravity="center"
-            android:paddingRight="16dp"/>
+            android:paddingRight="16dp"
+            android:text="Split (#)"
+            android:textColor="#000"
+            android:textSize="24sp" />
 
         <NumberPicker
+            android:id="@+id/splitInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/splitInput"
-            android:paddingTop="16dp">
-        </NumberPicker>
+            android:paddingTop="16dp" />
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tipDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/total"
+        android:paddingLeft="8dp"
         android:paddingTop="24dp"
-        android:text="Total: "
-        android:textColor="#FFF"
-        android:gravity="center"
-        android:textSize="24sp"/>
+        android:text="Tip "
+        android:textColor="#000"
+        android:textSize="30sp" />
 
+    <TextView
+        android:id="@+id/totalDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="24dp"
+        android:text="Total "
+        android:textColor="#000"
+
+        android:textSize="30sp" />
 </LinearLayout>
