@@ -30,8 +30,8 @@ public class MainActivity extends ActionBarActivity {
         initializeVariables();
 
         //hide action bar upon launch
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.hide();
 
         //set up SeekBar
         //Initialize the TextView showing current tip with '0%'.
