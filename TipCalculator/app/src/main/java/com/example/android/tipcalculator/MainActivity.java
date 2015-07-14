@@ -29,10 +29,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         initializeVariables();
 
-        //hide action bar upon launch
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.hide();
-
         //set up SeekBar
         //Initialize the TextView showing current tip with '0%'.
         tipText.setText("Tip: " + tipInput.getProgress() + "%");
