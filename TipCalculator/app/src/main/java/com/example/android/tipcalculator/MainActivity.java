@@ -59,9 +59,8 @@ public class MainActivity extends ActionBarActivity {
 
         //set up NumberPicker
         NumberPicker np = (NumberPicker) findViewById(R.id.splitInput);
-        np.setMaxValue(30); np.setMinValue(0);
-
-
+        np.setMaxValue(30);
+        np.setMinValue(0);
 
 
     }
@@ -96,39 +95,41 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     *Get user input of tip (in %) and attempt
-     *parsing to an int.
-     *@return tip percent as a double
+     * Get user input of tip (in %) and attempt
+     * parsing to an int.
+     *
+     * @return tip percent as a double
      */
-    private static double getTipPercent(EditText input){
+    private static double getTipPercent(EditText input) {
         String tipText = input.getText().toString();
         double tip = 0;
 
-        try{
+        try {
             tip = Double.parseDouble(tipText);
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.exit(-1);
         }
 
-        return tip/100;
+        return tip / 100;
     }
 
     /**
-     *Get user input of bill and attempt
-     *parsing to an int. The user will be prompted
-     *to specify again if the input was invalid.
-     *@return bill
+     * Get user input of bill and attempt
+     * parsing to an int. The user will be prompted
+     * to specify again if the input was invalid.
+     *
+     * @return bill
      */
-    private static int getBill(Scanner sc){
+    private static int getBill(Scanner sc) {
         int bill = 0;
 
-        while(true){
+        while (true) {
             System.out.print("Please specify bill total: $");
             String billStr = sc.next();
-            try{
+            try {
                 bill = Integer.parseInt(billStr);
                 break;
-            }catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.print("Please specify a valid bill amount: $");
             }
 
@@ -138,11 +139,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     *Calculate total by multiplying bill
-     *with (1+tip).
+     * Calculate total by multiplying bill
+     * with (1+tip).
      */
-    private static void displayPrices(int bill, double tip){
+    private static void displayPrices(int bill, double tip) {
         System.out.println("--------------------------------------------");
-        System.out.println("Total: $" + (bill * (1+tip)));
+        System.out.println("Total: $" + (bill * (1 + tip)));
     }
 }
