@@ -61,6 +61,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
             android:paddingTop="16dp">
 
@@ -80,6 +81,16 @@
 
         </LinearLayout>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:onClick="calculate"
+            android:text="Calculate"
+            android:textSize="20sp"
+            />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -98,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_toRightOf="@+id/tipDisplay"
+                android:id="@+id/tipAmount"
                 android:gravity="end"
                 android:text="$0.00"
                 android:textSize="30sp" />
@@ -123,10 +135,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_toRightOf="@+id/totalDisplay"
+                android:id="@+id/totalAmount"
                 android:gravity="end"
                 android:text="$0.00"
                 android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
+
 </ScrollView>

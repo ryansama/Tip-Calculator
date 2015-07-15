@@ -6,11 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.support.v7.app.ActionBar;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import java.util.Scanner;
@@ -21,7 +19,8 @@ public class MainActivity extends ActionBarActivity {
     EditText billInput;//input for bill amount in dollars
     SeekBar tipInput;//input for tip amount in %
     TextView tipText;//TextView showing desired tip amount
-    TextView total;//TextView showing total
+    TextView tipAmount;
+    TextView totalAmount;//TextView showing total
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +28,10 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         initializeVariables();
 
-        //set up SeekBar
         //Initialize the TextView showing current tip with '0%'.
         tipText.setText("Tip: " + tipInput.getProgress() + "%");
+
+        //set up SeekBar
         tipInput.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
             int progress = 0;
 
@@ -66,6 +66,19 @@ public class MainActivity extends ActionBarActivity {
         tipInput = (SeekBar) findViewById(R.id.tipInput);
         tipText = (TextView) findViewById(R.id.tipText);
         billInput = (EditText) findViewById(R.id.billInput);
+        tipAmount = (TextView) findViewById(R.id.tipAmount);
+        totalAmount = (TextView) findViewById(R.id.totalAmount);
+    }
+
+    public void calculate(View view) {
+        double bill = getBill(billInput);
+        double tipPercent = getTipPercent(tipInput);
+        double tip = bill * tipPercent;
+        double total = bill * (1 + tipPercent);
+
+        tipAmount.setText("$" + tip);
+        totalAmount.setText("$" + total);
+
     }
 
     @Override
@@ -96,50 +109,28 @@ public class MainActivity extends ActionBarActivity {
      *
      * @return tip percent as a double
      */
-    private static double getTipPercent(EditText input) {
-        String tipText = input.getText().toString();
-        double tip = 0;
-
-        try {
-            tip = Double.parseDouble(tipText);
-        } catch (NumberFormatException e) {
-            System.exit(-1);
-        }
-
-        return tip / 100;
+    private static double getTipPercent(SeekBar input) {
+        int tip = input.getProgress();
+        double tipDouble = tip / 100;
+        return tipDouble;
     }
 
     /**
      * Get user input of bill and attempt
-     * parsing to an int. The user will be prompted
-     * to specify again if the input was invalid.
+     * parsing to a double.
      *
      * @return bill
      */
-    private static int getBill(Scanner sc) {
-        int bill = 0;
+    private double getBill(EditText input) {
+        double bill = 0;
+        String billStr = input.getText().toString();
 
-        while (true) {
-            System.out.print("Please specify bill total: $");
-            String billStr = sc.next();
-            try {
-                bill = Integer.parseInt(billStr);
-                break;
-            } catch (NumberFormatException e) {
-                System.out.print("Please specify a valid bill amount: $");
-            }
-
+        try {
+            bill = Double.parseDouble(billStr);
+        } catch (NumberFormatException e) {
+            System.exit(-1);
         }
 
         return bill;
-    }
-
-    /**
-     * Calculate total by multiplying bill
-     * with (1+tip).
-     */
-    private static void displayPrices(int bill, double tip) {
-        System.out.println("--------------------------------------------");
-        System.out.println("Total: $" + (bill * (1 + tip)));
     }
 }
